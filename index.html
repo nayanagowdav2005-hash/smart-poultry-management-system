@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Poultry Management Dashboard</title>
+    <meta http-equiv="refresh" content="5">
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #eef2f3;
+            text-align: center;
+            margin: 0;
+        }
+        header {
+            background: #2c3e50;
+            color: white;
+            padding: 20px;
+        }
+        .container {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 30px;
+            flex-wrap: wrap;
+        }
+        .card {
+            background: white;
+            width: 220px;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+        .value {
+            font-size: 28px;
+            font-weight: bold;
+        }
+        .status {
+            margin: 30px auto;
+            width: 60%;
+            padding: 15px;
+            border-radius: 10px;
+            font-size: 20px;
+            font-weight: bold;
+        }
+        .normal {
+            background: #d4edda;
+            color: #155724;
+        }
+        .alert {
+            background: #f8d7da;
+            color: #721c24;
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <h1>IoT-Based Poultry Management System</h1>
+    <p>Live Web Dashboard</p>
+</header>
+
+<div class="container">
+    <div class="card">
+        <h3>Temperature</h3>
+        <div class="value">{{ temperature }} C</div>
+    </div>
+
+    <div class="card">
+        <h3>Humidity</h3>
+        <div class="value">{{ humidity }} %</div>
+    </div>
+
+    <div class="card">
+        <h3>Distance</h3>
+        <div class="value">{{ distance }} cm</div>
+    </div>
+</div>
+
+{% if temperature != "--" and temperature > 24 %}
+    <div class="status alert">
+        HIGH TEMPERATURE – ALERT
+    </div>
+{% else %}
+    <div class="status normal">
+        Temperature Normal
+    </div>
+{% endif %}
+
+</body>
+</html>
+
